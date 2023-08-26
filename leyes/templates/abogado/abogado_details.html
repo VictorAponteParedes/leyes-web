@@ -1,0 +1,82 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>perfil</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body >
+<div class="container py-3">
+    <div class="title h4 font-italic text-center">{{ abogado.nombre }}: Tu Aliado Legal</div>
+    <!-- Card Start -->
+    <div class="card">
+      <div class="row ">
+  
+        <div class="col-md-7 px-3">
+          <div class="card-block px-6">
+            <h4 class="card-title font-italic text-center">Mi perfil personal </h4>
+            <p class="card-text font-italic ml-4">
+                Nombre del Abogado: {{ abogado.nombre }} <br>
+                Edad: {{ abogado.edad }}<br>
+                Telefono: {{ abogado.telefono }}<br>
+                Cliente: {{ abogado.cliente_relacionado }}<br>
+                Especialidad: {{ abogado.especialidad }}<br><br>
+                {{ abogado.descripcion }}
+            </p>
+            
+            <a href="{% url 'index' %}" class="mt-auto btn btn-primary  text-center ml-4">Regresar</a>
+          </div>
+        </div>
+        <!-- Carousel start -->
+        <div class="col-md-5">
+          <div id="CarouselTest" class="carousel slide" data-ride="carousel">
+            <div>
+                {% if abogado.foto_perfil %}
+                  <img src="{{ abogado.foto_perfil.url }}" alt="" class="mx-auto d-block" style="width: 100%; border-radius: 20px;">
+                {% endif %}
+            </div>
+          </div>
+        </div>
+        <!-- End of carousel -->
+      </div>
+    </div>
+    <!-- End of card -->
+  
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

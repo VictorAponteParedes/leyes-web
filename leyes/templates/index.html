@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>Lista de Elementos</title>
+     <!-- ... Otros metadatos ... -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid bg-secondary">
+        <!-- MOSTRAR TODOS LOS CASOS -->
+        <div class="text-dark bg-secondary">
+            <div class="m-0 row justify-content-center align-items-center">
+            
+                 <h3 class="text-center text-white w-100">Casos</h3>
+                 {% for data in data.caso %}
+                 <div class="card mx-2 mb-2" style="width: 18rem;">
+                     {% if data.foto_perfil %}
+                     <img class="card-img-top" src="{{ data.foto_perfil.url }}" alt="Card image cap" style="height: 200px; object-fit: cover;">
+                     {% else %}
+                     
+                     <img class="card-img-top" style="height: 200px; object-fit: cover;">
+                     {% endif %}
+                     <div class="card-body">
+                        <p>Nombre del Caso: {{ data.nombre }}</p>
+                        <p>Numero del expediente:{{data.nro_expediente}}</p>
+                        <p>Fecha:{{data.fecha}}</p>
+                        <p>Materia:{{data.materia}}</p>
+                        <p>Juzgado:{{data.juzgado}}</p>
+                         <a href="#" class="btn btn-primary btn-sm">Ver informacion</a>
+                     </div>
+                 </div>
+                 {% endfor %}
+            
+            </div>
+         </div>
+    <br>
+
+    <!-- MOSTRAR TODOS LOS CLIENTES -->
+    <div class="text-dark bg-secondary">
+       
+         <div class="m-0 row justify-content-center align-items-center">
+             <h3 class="text-center text-white w-100">Clientes</h3>
+             {% for data in data.cliente %}
+             <div class="card mx-2 mb-2" style="width: 18rem;">
+                 {% if data.foto_perfil %}
+                 <img class="card-img-top" src="{{ data.foto_perfil.url }}" alt="Card image cap" style="height: 200px; object-fit: cover;">
+                 {% else %}
+                 
+                 <img class="card-img-top" style="height: 200px; object-fit: cover;">
+                 {% endif %}
+                 <div class="card-body">
+                    <p>Nombre del Cliente: {{ data.nombre }}</p>
+                    <p>Edad: {{ data.edad}}</p>
+                    <p>Telefono: {{ data.telefono}}</p>
+                    <p>Cado: {{ data.caso_relacionado}}</p>
+                     <a href="#" class="btn btn-primary btn-sm">Ver informacion</a>
+                 </div>
+             </div>
+             {% endfor %}
+         </div>
+       
+     </div>
+<br>
+<!-- MOSTRAR TODOS LOS ABOGADOS -->
+    <div class="text-dark bg-secondary">
+        
+            <div class="m-0 row justify-content-center align-items-center">
+                <h3 class="text-center text-white w-100">Abogados</h3>
+                {% for data in data.abogado %}
+                <div class="card mx-2 mb-2" style="width: 18rem;">
+                    {% if data.foto_perfil %}
+                    <img class="card-img-top" src="{{ data.foto_perfil.url }}" alt="Card image cap" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    
+                    <img class="card-img-top" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body">
+                        <p class="card-text">Nombre del Abogado: {{ data.nombre }}</p>
+                        <p class="card-text">Edad: {{ data.edad }}</p>
+                        <p class="card-text">Telefono: {{ data.telefono }}</p>
+                        <p class="card-text">Cliente: {{ data.cliente_relacionado }}</p>
+                        <a href="{% url 'abogado_detail' data.id %}" class="btn btn-primary btn-sm">Ver informacion</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+       
+    </div>
+
+
+</div>
+</body>
+</html>
