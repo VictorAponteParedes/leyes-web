@@ -12,6 +12,16 @@ body {
 
 }
 
+.fondo-imagen-index {
+  background-image: url('../images/fondo-index3.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100% !important;
+
+}
+
+
+
 
 .fondo-imagen-resto-pagina {
     background-image: url('../images/imagen_fondo_dos.jpg');

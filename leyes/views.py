@@ -1,9 +1,10 @@
 from django.urls import reverse
 
+
 from rest_framework.response import Response
 from rest_framework import viewsets, status
 from .serializers import CasoSerializer, ClienteSerializer, AbogadoSerializer
-from .models import Caso, Cliente, Abogado
+from .models import Caso, Cliente, Abogado,Rolpersona
 from .forms import CasoForm, AbogadoForm, ClienteForm
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView, DetailView
@@ -11,8 +12,15 @@ from django.shortcuts import render
 
 
 # Create your views here.
+
 class IndexView(ListView):
+    model = Rolpersona
     template_name = 'index.html'
+
+
+
+class RolesView(ListView):
+    template_name = 'list_roles.html'
     context_object_name = 'data'  # Cambia el nombre del contexto a algo más genérico
 
     def get_queryset(self):
@@ -31,12 +39,8 @@ class CrearCasoView(CreateView):
     template_name = 'caso/caso.html'
      # Cambia esto a la URL deseada
 
-    def form_valid(self, form):
-        nombre = form.cleaned_data.get('nombre')
-        nro_expediente = form.cleaned_data.get('nro_expediente')
-
     def get_success_url(self):
-         return reverse("index")
+         return reverse("list-all")
 
 
 class CrearClienteView(CreateView):
@@ -51,7 +55,7 @@ class CrearClienteView(CreateView):
 
 
     def get_success_url(self):
-         return reverse("index")
+         return reverse("list-all")
 
 
 class CrearAbogadoView(CreateView):
@@ -65,7 +69,7 @@ class CrearAbogadoView(CreateView):
         telefono = form.cleaned_data.get('telefono')
         
     def get_success_url(self):
-         return reverse("index")
+         return reverse("list-all")
     
 
 

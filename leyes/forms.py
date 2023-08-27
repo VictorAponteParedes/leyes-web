@@ -15,6 +15,9 @@ class CasoForm(forms.ModelForm):
             'juzgado': 'Juzgado Asignado',
             'foto_perfil': 'Foto del Caso'
         }
+        widgets = {
+            'fecha': forms.DateInput(attrs={'type': 'date'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

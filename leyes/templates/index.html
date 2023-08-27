@@ -1,92 +1,55 @@
-<html>
-<head>
-    <title>Lista de Elementos</title>
-     <!-- ... Otros metadatos ... -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- ... Otros metadatos ... -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    </head>
 <body>
-    <div class="container-fluid bg-secondary">
-        <!-- MOSTRAR TODOS LOS CASOS -->
-        <div class="text-dark bg-secondary">
-            <div class="m-0 row justify-content-center align-items-center">
-            
-                 <h3 class="text-center text-white w-100">Casos</h3>
-                 {% for data in data.caso %}
-                 <div class="card mx-2 mb-2" style="width: 18rem;">
-                     {% if data.foto_perfil %}
-                     <img class="card-img-top" src="{{ data.foto_perfil.url }}" alt="Card image cap" style="height: 200px; object-fit: cover;">
-                     {% else %}
-                     
-                     <img class="card-img-top" style="height: 200px; object-fit: cover;">
-                     {% endif %}
-                     <div class="card-body">
-                        <p>Nombre del Caso: {{ data.nombre }}</p>
-                        <p>Numero del expediente:{{data.nro_expediente}}</p>
-                        <p>Fecha:{{data.fecha}}</p>
-                        <p>Materia:{{data.materia}}</p>
-                        <p>Juzgado:{{data.juzgado}}</p>
-                         <a href="#" class="btn btn-primary btn-sm">Ver informacion</a>
-                     </div>
-                 </div>
-                 {% endfor %}
-            
-            </div>
-         </div>
-    <br>
 
-    <!-- MOSTRAR TODOS LOS CLIENTES -->
-    <div class="text-dark bg-secondary">
-       
-         <div class="m-0 row justify-content-center align-items-center">
-             <h3 class="text-center text-white w-100">Clientes</h3>
-             {% for data in data.cliente %}
-             <div class="card mx-2 mb-2" style="width: 18rem;">
-                 {% if data.foto_perfil %}
-                 <img class="card-img-top" src="{{ data.foto_perfil.url }}" alt="Card image cap" style="height: 200px; object-fit: cover;">
-                 {% else %}
-                 
-                 <img class="card-img-top" style="height: 200px; object-fit: cover;">
-                 {% endif %}
-                 <div class="card-body">
-                    <p>Nombre del Cliente: {{ data.nombre }}</p>
-                    <p>Edad: {{ data.edad}}</p>
-                    <p>Telefono: {{ data.telefono}}</p>
-                    <p>Cado: {{ data.caso_relacionado}}</p>
-                     <a href="#" class="btn btn-primary btn-sm">Ver informacion</a>
-                 </div>
-             </div>
-             {% endfor %}
-         </div>
-       
-     </div>
-<br>
-<!-- MOSTRAR TODOS LOS ABOGADOS -->
-    <div class="text-dark bg-secondary">
-        
-            <div class="m-0 row justify-content-center align-items-center">
-                <h3 class="text-center text-white w-100">Abogados</h3>
-                {% for data in data.abogado %}
-                <div class="card mx-2 mb-2" style="width: 18rem;">
-                    {% if data.foto_perfil %}
-                    <img class="card-img-top" src="{{ data.foto_perfil.url }}" alt="Card image cap" style="height: 200px; object-fit: cover;">
-                    {% else %}
-                    
-                    <img class="card-img-top" style="height: 200px; object-fit: cover;">
-                    {% endif %}
-                    <div class="card-body">
-                        <p class="card-text">Nombre del Abogado: {{ data.nombre }}</p>
-                        <p class="card-text">Edad: {{ data.edad }}</p>
-                        <p class="card-text">Telefono: {{ data.telefono }}</p>
-                        <p class="card-text">Cliente: {{ data.cliente_relacionado }}</p>
-                        <a href="{% url 'abogado_detail' data.id %}" class="btn btn-primary btn-sm">Ver informacion</a>
+    <div class="container-fluid fondo-imagen-index text-white font-italic">
+        <div class="row">
+            <div class="col text-center mt-5">
+                <h1>Bienvenido a Nuestra Plataforma Legal</h1>
+                <p>¡Donde tus necesidades legales encuentran soluciones!</p>
+                <p>En nuestra plataforma, puedes:</p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check"></i> Encontrar un abogado para tu caso</li>
+                    <li><i class="fas fa-check"></i> Ofrecer tus servicios legales como abogado</li>
+                    <li><i class="fas fa-check"></i> Conectar con expertos legales</li>
+                </ul>
+                <p>Si eres abogado:</p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check"></i> Ampliar tu base de clientes</li>
+                    <li><i class="fas fa-check"></i> Ofrecer tu experiencia legal</li>
+                    <li><i class="fas fa-check"></i> Colaborar con otros profesionales legales</li>
+                </ul>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="rolDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Selecciona tu Rol
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="rolDropdown">
+                        <a class="dropdown-item" href="{url_para_seleccionar_cliente}">Cliente</a>
+                        <a class="dropdown-item" href="{url_para_seleccionar_abogado}">Abogado</a>
                     </div>
                 </div>
-                {% endfor %}
+                <p>¿Listo para empezar?</p>
+               
             </div>
-       
+        </div>
     </div>
+    
+    
+    
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-</div>
+    
 </body>
 </html>

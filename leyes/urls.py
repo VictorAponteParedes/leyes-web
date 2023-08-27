@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from leyes import views
-from .views import IndexView ,CrearCasoView, CrearClienteView, CrearAbogadoView, AbogadoDetailView
+from .views import IndexView ,RolesView ,CrearCasoView, CrearClienteView, CrearAbogadoView, AbogadoDetailView
 
 
 from setup import settings
@@ -25,6 +25,7 @@ urlpatterns = [
 
     #vistas del cliente
     path('index/', IndexView.as_view(), name='index'),
+    path('list-roles/', RolesView.as_view(), name='list-all'),
     path('crear_caso/', CrearCasoView.as_view(), name='crear_caso'),
     path('crear_cliente/', CrearClienteView.as_view(), name='crear_cliente'),
     path('crear_abogado/', CrearAbogadoView.as_view(), name='crear_abogado'),

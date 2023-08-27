@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Caso, Cliente, Abogado
+from .models import Caso, Cliente, Abogado, Rolpersona
 from django.utils.html import format_html
 
 class CasoAdmin(admin.ModelAdmin):
@@ -31,3 +31,10 @@ class AbogadoAdmin(admin.ModelAdmin):
     mostrar_imagen.short_description = 'Imagen de Perfil'
 
 admin.site.register(Abogado, AbogadoAdmin)
+
+
+class RolAdmin(admin.ModelAdmin):
+    list_display = ["rol"]
+
+
+admin.site.register(Rolpersona, RolAdmin)

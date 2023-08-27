@@ -53,3 +53,16 @@ class Abogado(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+
+class Rolpersona(models.Model):
+    ROL = (
+            ('vacio', '-------'),
+            ('cliente', 'Cliente'),
+            ('abogado', 'Abogado'),
+        )
+    
+    rol = models.CharField(max_length=10, help_text="Selecciona tu rol", choices=ROL, default='vacio')
+
+    def __str__(self):
+        return self.rol
