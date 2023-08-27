@@ -3,18 +3,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- ... Otros metadatos ... -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
-<body class="bg-dark text-white">
+<body>
 
 
   {% block content %}
-  <div class="container-fluid">
+  <div class="container-fluid d-flex justify-content-center fondo-imagen-resto-pagina">
     <div class="row">
-      <div class="col-lg-6 col-md-8 col-sm-10 col-12 offset-lg-3 offset-md-2 offset-sm-1">
-        <form class="form mt-5" method="post">
+      <div class="col-12">
+        <form class="form mt-5 text-white" method="post">
           <h3 class="text-center mb-4 font-italic  title-with-shadow">Empieza a Actuar: Registro de Casos</h3>
           {% csrf_token %}
           {{ form|crispy }}

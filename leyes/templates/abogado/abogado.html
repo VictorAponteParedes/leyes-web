@@ -4,18 +4,20 @@
 <!DOCTYPE html> 
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- ... Otros metadatos ... -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
-<body class="text-white">
+<body>
 
   
   {% block content %}
-  <div class="container-fluid d-flex justify-content-center">
+  <div class="container-fluid d-flex justify-content-center fondo-imagen-abogado">
     <div class="row">
       <div class="col-12">
-        <form class="form mt-5" method="post">
+        <form class="form mt-5 text-white" method="post">
           <h3 class="text-center font-italic mb-4 title-with-shadow">Únete a nuestro equipo de<br>Abogados</h3>
           {% csrf_token %}
           {{ form|crispy }}
